@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+  <head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>Photolog::{% block title %}{% endblock %}</title>
+		<meta name="description" content="" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+		<link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}" type="text/css" media="screen" title="photolog" charset="UTF-8" />
+		<link rel="stylesheet" href="{{ url_for('static',filename='css/font-awesome.min.css') }}" type="text/css" media="screen" title="photolog" charset="UTF-8" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap-responsive.css') }}" type="text/css" media="screen" title="photolog" charset="UTF-8" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap-fileupload.min.css') }}" type="text/css" media="screen" title="photolog" charset="UTF-8" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}" type="text/css" media="screen" title="photolog" charset="UTF-8" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/placeholder-error.css') }}" type="text/css" media="screen" title="photolog" charset="UTF-8" />
+		<!--[if IE 7]>
+			<link rel="stylesheet" href="{{ url_for('static',filename='css/font-awesome-ie7.min.css')}}">
+		<![endif]-->
+
+		<!--[if lt IE 9]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap-fileupload.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static',filename='js/bootbox.min.js') }}"></script>
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+		<script type="text/javascript" src="{{ url_for('static',filename='js/gmaps.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static',filename='js/exif.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static',filename='js/binaryajax.js') }}"></script>
+        
+		{% block head %}{% endblock %}
+  </head>
+  <body width="100%">
+
+	<div id="header-menu" class="span12" style="width: 100%;">
+		<div class="navbar navbar-inverse navbar-fixed-top">
+	      <div class="navbar-inner">
+	        <div class="container-fluid">
+	          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <a class="brand" href="{{ url_for('photolog.index') }}">&nbsp;<i class="icon-picture"></i>Photolog</a>
+	          <div class="nav-collapse collapse">
+	            <ul class="nav">
+		        		<li class="active"><a  href="{{ url_for('photolog.show_map') }}" ><i class="icon-map-marker icon-large"></i> 지도에서 사진보기 </a></li>
+		        		<li class="active"><a  href="{{ url_for('photolog.show_all') }}" ><i class="icon-th-list icon-large"></i> 사진 목록 보기 </a></li>
+		        		<li class="active">
+					<a  href="{{ url_for('photolog.upload_photo_form') }}" ><i class="icon-camera-retro icon-large"> 사진 올리기 </i></a>
+					</li>
+			     </ul>
+	            <ul class="nav pull-right">
+                    <li><a href="{% if session.__contains__('user_info') %}{{ url_for('photolog.update_user_form', username=session.user_info.username) }}{% endif %}"><i class="icon-pencil"></i> 개인정보 수정</a></li>
+                    <li><a id="logout" href="#" class="navbar-link"><i class="icon-user"></i> Logout</a></li>
+				</ul>
+				<form class="navbar-search pull-left form-search" action="{{ url_for('photolog.search_photo') }}" method="POST">
+					<div class="input-append">
+						<input type="text" name="search_word" class="input-small search-query" placeholder="Search" {% if search_word %} value='{{search_word}}' {% endif %}>
+						<button type="submit" class="btn btn-primary"><i class="icon-search"></i></button>
+					</div>
+				</form>
+	          </div><!--/.nav-collapse -->
+	        </div>
+	      </div>
+	    </div>
+	</div> <!-- header -->
+
+
+
+
+	<!-- content-->
+	<div id="photolog-content" class="span12" style="padding-top: 50px; padding-bottom: 30px;">
+
+    		{% block content %}{% endblock %}
+
+	</div>
+	<!-- end of content-->
+
+
+
+
+	<!-- footer begin -->
+    <div id="footer" class="span12">
+        <div class="navbar navbar-inverse navbar-fixed-bottom">
+            <div class="navbar-inner">
+                <div class="container">
+                    <div id="footer-menu" class="nav-collapse collapse">
+                        <p id="since" class="navbar-text">Since 2013</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<!-- footer end -->
+	<script type="text/javascript">
+		$('#logout').click(function(e){
+
+			bootbox.confirm("로그아웃 하시겠습니까?", function(result) {
+				if(result){
+					window.location="{{ url_for('photolog.logout') }}"
+				}
+			});
+
+		});
+	</script>
+
+  </body>
+</html>

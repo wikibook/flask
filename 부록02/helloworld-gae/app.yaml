@@ -1,0 +1,16 @@
+application: helloworld-flask
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+
+libraries:
+- name: jinja2
+  version: "2.6"
+
+
+handlers:
+- url: /.*
+  script: main.app
+

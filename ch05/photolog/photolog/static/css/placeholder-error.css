@@ -1,0 +1,18 @@
+
+input.error:-moz-placeholder,
+textarea.error:-moz-placeholder {
+  color: red;
+}
+
+input.error:-ms-input-placeholder,
+textarea.error:-ms-input-placeholder {
+  color: red;
+}
+
+
+input.error::-webkit-input-placeholder,
+textarea.error::-webkit-input-placeholder {
+  color: red;
+}
+
+

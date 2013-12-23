@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block title %}Map{% endblock %}
+{% block head %}
+<script type="text/javascript">
+var map;
+
+$(document).ready(function(){
+  
+	map = new GMaps({
+		div: '#map-large',
+		{% if photos %}
+			lat: {{ photos[0].geotag_lat }},
+			lng: {{ photos[0].geotag_lng }}
+		{% else %}
+			lat: 37.565467,
+  			lng: 126.975431
+		{% endif %}
+	});
+	
+{% for photo in photos %}      
+	map.addMarker({
+		lat: {{ photo.geotag_lat }},
+		lng: {{ photo.geotag_lng }},
+		title: '{{ photo.filename_orig }}',
+		infoWindow: {
+			content: '<div><b>{{ photo.taken_date }}</b></div><div>{{ photo.comment }}</div><div><a href="javascript:popupImage(\'{{ url_for('photolog.download_photo', photolog_id=photo.id) }}\');"><img class="map-image" src="{{ url_for('photolog.download_thumbnail', photolog_id=photo.id) }}"/></a></div>'
+		}
+   	});
+{% endfor %}
+});
+    
+function popupImage(url) {
+	bootbox.alert('<img class=\"popup-image\" src=\"' + url + '\"/>');
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+  <div class="row-fluid span12 well">
+	<div class="container span12">
+       <div id="map-large" class="span12"></div>
+    </div>
+  </div>
+	
+	
+	
+{% endblock %}

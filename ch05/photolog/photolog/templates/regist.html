@@ -1,0 +1,153 @@
+{% extends "layout.html" %}
+{% block title %}Regist{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+
+<!-- 사용자 등록 폼 -->
+{% block content %}
+<script type=text/javascript>
+  $(function() {
+    var submit_form = function(e) {
+      if ($('input[name=username]').val() != '') {
+        $.ajax({
+        	url         : '/user/check_name'
+           ,type        : 'POST'
+           ,cache       : false
+           ,data        : JSON.stringify({
+        	   username: $('input[name=username]').val()
+             })
+           ,contentType : 'application/json; charset=utf-8'
+           ,dataType    : 'json'
+           ,success     : function(data) {
+        	   username = $('input[name=username]').val();
+        	   if (data.result) {
+        	       
+                   $('#regist').modal('hide');
+                   
+                   bootbox.alert(username + '는 사용 가능한 아이디입니다.', function() {
+                       $('#regist').modal('show');
+                	   $('input[name=username_check]').val('Y');
+                	   $('input[name=email]').focus().select();
+                   
+                   });
+        	   } else {
+        	       $('#regist').modal('hide');
+                   
+                   bootbox.alert(username + '는 이미 사용중입니다. 다른 아이디를 사용하세요.', function() {
+                       $('#regist').modal('show');
+                	   $('input[name=username]').val('');
+                       $('input[name=username]').focus().select();
+                   });
+        	   }
+             }
+           ,error: function(result) {
+               $('#regist').modal('hide');
+
+        	   bootbox.alert('통신에 오류가 발생했습니다. 잠시 후에 다시 사용하세요.', function() {
+                   $('#regist').modal('show');
+        	   });
+           }
+        });
+        
+      } else { 
+          $('#regist').modal('hide');
+
+    	  bootbox.alert('사용자명을 넣어주세요.', function() {
+              $('#regist').modal('show');
+              $('input[name=username]').focus();
+    	  });
+      }
+      return false;
+    };
+        
+    $('button#username_check').bind('click', submit_form);
+    $('input[name=username]').focus();
+  });
+</script>
+{% from "_formhelpers.html" import render_field %}
+<form class="form-horizontal" action='#' method="POST">
+
+    <div id="regist" class="modal fade" role="dialog"  data-keyboard="false" data-backdrop="static" style="position:absolute; overflow:auto;">
+
+    	<div class="modal-header">
+            <button class="close" data-dismiss="modal" onclick="javascript:location.replace('{{ url_for('photolog.show_all') }}');"><i class="icon-remove"></i> &nbsp;</button>
+    		<h3 id="myModalLabel">&nbsp;<i class="icon-user"></i>&nbsp;{% if user %}회원 정보 수정{% else %}회원 가입{% endif %}</h3>
+    	</div>
+    	            
+    	<div class="modal-body">
+    		  <fieldset>
+    			<div class="control-group">
+    			  <!-- Username -->
+    			  <label class="control-label"  for="username">아이디</label>
+    			  <div class="controls">
+    			    {% if user %}
+    			     {{ render_field(form.username, class="input-xlarge", placeholder="문자와 숫자로 공백없이 입력해주세요.", readOnly="True")  }}
+    			    {% else %}
+    			    <div class="input-append">
+    			      {{ render_field(form.username, class="input-xlarge", placeholder="문자와 숫자로 공백없이 입력해주세요.") }}
+    			      <button id="username_check" class="btn btn-primary">확인</button>
+    			      {{ render_field(form.username_check) }}
+    			    </div>
+    			    {% endif %}
+    			  </div>
+    			</div>
+    		 
+    		    <div class="control-group">
+    		      <!-- E-mail -->
+    		      <label class="control-label" for="email">E-mail</label>
+    		      <div class="controls">
+                    {{ render_field(form.email, class="input-xlarge", placeholder="형식에 맞게 이메일을 입력해주세요.") }}
+    		      </div>
+    		    </div>
+    		 
+    		    <div class="control-group">
+    		      <!-- Password-->
+    		      <label class="control-label" for="password">비밀번호</label>
+    		      <div class="controls">
+    		        {{ render_field(form.password, class="input-xlarge", placeholder="최소한 4 글자 이상으로 해주세요.") }}
+    		      </div>
+    		    </div>
+    		 
+    		    <div class="control-group">
+    		      <!-- Password -->
+    		      <label class="control-label"  for="password_confirm">비밀번호(재입력)</label>
+    		      <div class="controls">
+    		        {{ render_field(form.password_confirm, class="input-xlarge", placeholder="비밀번호를 다시 입력해주세요.") }}
+    		      </div>
+    		    </div>
+    		 
+    		  </fieldset>
+    	</div> <!-- modal-body -->
+    	
+    	<div class="modal-footer">
+            <button class="btn btn-success">{% if user %}회원 정보 수정{% else %}가입하기{% endif %}</button>
+            {% if user %}<a href="javascript:unregist();" class="btn btn-primary">서비스 탈퇴</a>{% endif %}
+    	</div> <!-- modal-footer -->
+
+    </div>
+</form>
+
+    <script type="text/javascript">
+ 		$('#regist').modal('show');
+
+        function unregist(){
+
+            $('#regist').modal('hide');
+
+            bootbox.confirm("탈퇴하시겠습니까?", function(result) {
+                if(result){
+                    $(location).attr('href',"{{ url_for('photolog.unregist') }}");
+                
+                }else{
+                    $('#regist').modal('show');
+                }
+                
+            });
+
+        }
+
+    </script>
+
+
+{% endblock %}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+    Remove this if you use the .htaccess -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>::500 Error::</title>
+    <meta name="description" content="" />
+    <meta name="author" content="4mba" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}" type="text/css" media="screen" title="photolog" charset="UTF-8" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/font-awesome.min.css') }}" type="text/css" media="screen" title="photolog" charset="UTF-8" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}" type="text/css" media="screen" title="photolog" charset="UTF-8" />
+
+    <!--[if IE 7]>
+      <link rel="stylesheet" href="{{ url_for('static',filename='css/font-awesome-ie7.min.css')}}">
+    <![endif]-->
+    
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/bootbox.min.js') }}"></script>
+     </head>
+
+	<body>
+		  <div class="hero-unit center">
+		    <h1>Server Error <small><font face="Tahoma" color="red">Error 500</font></small></h1>
+		    <p>
+    		    <div class="container badge">
+    		        <p><pre>{{err_msg}}</pre></p>
+    		    </div>
+		    </p>
+		    <br />
+		    <p>The page you requested could not be offered, either contact your webmaster or try again. Use your browsers <b>Back</b> button to navigate to the page you have prevously come from</p>
+		    <p><b>Or you could just press this neat little button:</b></p>
+		    <a href="/" class="btn btn-large btn-info"><i class="icon-home icon-white"></i> Take Me Home</a>
+		  </div>
+		  <br />
+  
+  </body>
+</html>

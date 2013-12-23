@@ -1,0 +1,124 @@
+{% extends "layout.html" %}
+{% block title %}Photo list{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+
+<!-- 업로드된 사진을 보여준다 -->
+{% block content %}
+
+  <div class="row-fluid span12">
+	<div class="span12 valign-middle">
+            <table class="table table-hover text-center" align="center">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>미리보기</th>
+                  <th>용량</th>
+                  <th>태그</th>
+                  <th>메모</th>
+                  <th>찍은날</th>
+                  <th>올린날</th>
+                  <th>수정/삭제/트윗</th>
+                </tr>
+              </thead>
+              <tbody>
+              
+		      {% for photo in photos %}
+                <tr>
+                  <td class="valign-middle">{{ loop.index }}</td>
+                  <td class="valign-middle"> 
+				    <div class="fileupload-new thumbnail" style="width: 100px; height: 80px;">
+				    	<img src="{{ url_for('photolog.download_thumbnail', photolog_id=photo.id) }}" onclick="javascript:show('{{ url_for('photolog.download_photo', photolog_id=photo.id) }}');" style="width: 95px; height: 75px;"/>
+				    </div>
+                  </td>
+                  <td class="valign-middle"><span class="badge badge-success">{{ sizeof_fmt(photo.filesize) }}</span></td>
+                  <td class="valign-middle"><span class="label label-info">{{ photo.tag }}</span></td>
+                  <td class="valign-middle">{{ photo.comment }}</td>
+                  <td class="valign-middle">{{ photo.taken_date.strftime('%Y-%m-%d %H:%M') }}</td>
+                  <td class="valign-middle">{{ photo.upload_date.strftime('%Y-%m-%d %H:%M') }}</td>
+                  <td class="valign-middle">
+                      <a class="btn btn-success btn-mini" href="javascript:update_photo_form('{{ url_for('photolog.update_photo_form', photolog_id=photo.id)}}');">
+                          <i class="icon-pencil"></i>
+                      </a>  
+                      <a class="btn btn-warning btn-mini" href="javascript:remove('{{ url_for('photolog.remove', photolog_id=photo.id)}}');">
+                          <i class="icon-remove"></i>
+                      </a>
+                      <a class="btn btn-primary btn-mini" href="javascript:twit('{{ url_for('photolog.send', photolog_id=photo.id)}}');" >
+                          <i class="icon-twitter"></i>
+                      </a>
+                  </td>
+                </tr>
+			  {% endfor %}
+
+              </tbody>
+            </table>
+        </div>
+	</div>
+	
+
+        {% if pagination %}
+            <div class="row-fluid" align="center">
+                <div class="span12">
+                <p>
+                    {% from "_pagehelpers.html" import render_pagination %}
+                    {{ render_pagination(pagination) }}
+                </p>
+                </div>
+            </div>
+        {% else %}
+        <!-- do nothing! -->
+        {% endif %}
+
+
+<script type="text/javascript">
+
+{% if session.__contains__('TWITTER_RESULT') %}
+
+    var twit_result = '{{ session.pop('TWITTER_RESULT', None) }}';
+        
+    if (twit_result == 'ok') {
+        bootbox.alert('트윗전송을 성공하였습니다.');          
+    }
+    else {
+        bootbox.alert('트윗전송을 실패하였습니다. ('+twit_result+')');         
+    }
+{% endif %}
+
+
+    function show(url){
+        bootbox.alert("<a href='"+url+"' target='_blank' title='다운로드'><img src='"+url+"' style='width:100%;'></a>");    
+    }
+    
+
+
+    function update_photo_form(url){
+        window.location.href = url;
+    }
+
+
+    function remove(url){
+    
+        bootbox.confirm("삭제 하시겠습니까?", function(result) {
+            if(result == true){
+                window.location.href= url;
+            }
+        }); 
+    }
+
+    function twit(url){
+    
+        bootbox.confirm("트위터로 전송 하시겠습니까?", function(result) {
+            if(result == true){
+                window.location.href= url;
+            }
+        }); 
+    }
+
+
+</script>
+	
+{% endblock %}
+
+
+

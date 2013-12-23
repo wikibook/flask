@@ -1,0 +1,116 @@
+{% extends "layout.html" %}
+{% block title %}Login{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+
+
+{% block content %}
+    <!-- HTML Source Code from : http://bootsnipp.com/snipps/full-width-login-form -->
+    <div class="container-fluid" >
+      <div class="row">
+        {% from "_formhelpers.html" import render_field %}
+        <form name="frm" method="POST" action="{{ url_for('photolog.login') }}" accept-charset="UTF-8" onSubmit="return checkLogin(this)">
+        <div id="login-form" class="modal fade modal-login" data-keyboard="false" data-backdrop="static" style="display: show; position:absolute; overflow:auto;">
+
+            <div class="modal-head">
+              <legend>&nbsp;<i class="icon-user"></i> 로그인 하기</legend>
+              {% if error %}
+              <div class="alert alert-error">
+                <a class="close" data-dismiss="alert" href="#">×</a>{{ error }}
+              </div>
+              {% endif %}
+              {% if regist_username %}
+              <div class="alert alert-success">
+                <a class="close" data-dismiss="alert" href="#">×</a>
+                {{ regist_username }}의 가입을 환영합니다! 
+              </div>
+              {% elif update_username %}
+              <div class="alert alert-info">
+                <a class="close" data-dismiss="alert" href="#">×</a>
+                {{ update_username }}의 정보가 변경됐습니다. 
+              </div>
+              {% endif %}
+           </div>
+          <div class="modal-body">
+              {{ render_field(form.username, class="input-block-level", placeholder="Username") }}
+              {{ render_field(form.password, class="input-block-level", placeholder="Password") }}
+              {{ render_field(form.next_url, value= next_url) }}
+              <label class="checkbox">
+                  <input type="checkbox" name="remember" value="1" onClick="confirmSave(this)" > ID 기억하기
+              </label>
+          </div> <!-- modal-body -->
+          
+          <div class="modal-footer">
+              <button type="submit" name="submit" class="btn btn-info">로그인</button>
+              <a href="{{ url_for('photolog.register_user_form') }}" class="btn btn-success" >가입하기</a>
+          </div>          
+
+        
+        </div> <!-- login -->
+       </form>
+      </div> <!-- row -->
+    </div> <!-- container -->
+
+    <script type="text/javascript">
+
+      $('#login-form').modal('show');
+      $('#username').focus();
+      
+      function confirmSave(checkbox) {
+        var isRemember;
+
+        if (checkbox.checked) {
+          isRemember = confirm("이 PC에 로그인 정보를 저장하시겠습니까? PC방등의 공공장소에서는 개인정보가 유출될 수 있으니 주의해주십시오.");
+          
+          if (!isRemember) checkbox.checked = false;
+        }
+      }
+      
+      function setsave(name, value, expiredays) {
+        var today = new Date();
+        today.setDate( today.getDate() + expiredays );
+        document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + today.toGMTString() + ";"
+      }
+      
+      function saveLogin(username){
+        if (username != "") {
+          setsave("username", username, 7);
+         } else {
+           setsave("username", username, -1);
+         }
+      }
+      
+      function getLogin() {
+        var cookie = document.cookie + ";";
+        var index = cookie.indexOf("username", 0);
+        var val = "";
+
+        if (index != -1) {
+          cookie = cookie.substring(index, cookie.length);
+          begin = cookie.indexOf("=", 0) + 1;
+          end = cookie.indexOf(";", begin);
+          val = unescape(cookie.substring(begin, end));
+         }
+        
+        if (val!= "") {
+          document.frm.username.value = val;
+          document.frm.remember.checked = true;
+        }
+      
+      }
+      
+      function checkLogin() {
+    	if (document.frm.remember.checked) {
+    	  saveLogin(document.frm.username.value);
+    	}
+    	else {    	  
+    	  saveLogin("");
+    	}
+      }
+      
+      window.onload = getLogin()
+    </script>
+
+    
+{% endblock %}

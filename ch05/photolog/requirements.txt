@@ -1,0 +1,11 @@
+Flask
+Jinja2
+werkzeug
+markupsafe
+itsdangerous
+SQLAlchemy
+Redis
+WTForms
+twython
+PIL
+

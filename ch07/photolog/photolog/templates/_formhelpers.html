@@ -1,0 +1,17 @@
+{% macro render_field(field) %}
+  {{ field(**kwargs)|safe }}
+  {% if field.errors %}
+    <script type="text/javascript">
+    {% for error in field.errors %}
+        class_attr = $('#{{ field.id }}').attr('class')
+        $('#{{ field.id }}').attr('class', class_attr + ' error');
+        
+        placeholder = $('#{{ field.id }}').attr('placeholder')
+        if (placeholder)
+            $('#{{ field.id }}').attr('placeholder', '{{ error }}');
+        else
+        	bootbox.alert('{{error}}');
+    {% endfor %}
+    </script>
+  {% endif %}
+{% endmacro %}
