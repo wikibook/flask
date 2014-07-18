@@ -3,6 +3,8 @@
   {% if field.errors %}
     <script type="text/javascript">
     {% for error in field.errors %}
+        $('#{{ field.id }}').attr('value', '');
+    
         class_attr = $('#{{ field.id }}').attr('class')
         $('#{{ field.id }}').attr('class', class_attr + ' error');
         
