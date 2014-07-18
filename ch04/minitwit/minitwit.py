@@ -16,7 +16,7 @@ from datetime import datetime
 from contextlib import closing
 from flask import Flask, request, session, url_for, redirect, \
      render_template, abort, g, flash
-from werkzeug import check_password_hash, generate_password_hash
+from werkzeug.security import check_password_hash, generate_password_hash
 
 
 # configuration
@@ -39,7 +39,7 @@ def connect_db():
 def init_db():
     """Creates the database tables."""
     with closing(connect_db()) as db:
-        with app.open_resource('schema.sql') as f:
+        with app.open_resource('schema.sql', mode='r') as f:
             db.cursor().executescript(f.read())
         db.commit()
 
@@ -248,4 +248,5 @@ app.jinja_env.filters['gravatar'] = gravatar_url
 
 
 if __name__ == '__main__':
+    init_db()
     app.run()
