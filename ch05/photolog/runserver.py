@@ -9,12 +9,7 @@
     :license: MIT LICENSE 2.0, see license for more details.
 """
 
-import sys
-
 from photolog import create_app
-
-reload(sys)
-sys.setdefaultencoding('utf-8')
 
 application = create_app()    
 
