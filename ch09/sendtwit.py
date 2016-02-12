@@ -19,35 +19,15 @@ try:
     photo = open('Desert.jpg', 'rb')
     result = twitter.update_status_with_media(status='twit with image!', media=photo)
 
-    print json.dumps(result, indent=2, sort_keys=True)
+    print (json.dumps(result, indent=2, sort_keys=True))
     
 except TwythonError as e:
-    print e
+    print (e)
     
 except IOError as e:
-    print e
+    print (e)
     
-# auth_tokens = twitter.get_authorized_tokens(oauth_verifier)
-# print auth_tokens
-
-
-# auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-# auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
-# api = tweepy.API(auth)
-# 
-# dirpath = os.path.dirname(os.path.abspath(__file__))
-# file_path = dirpath + "jobs.jpg"
-# api.status_update_with_media(file_path, status='Stay hungry, stay foolish')
-
-
-
-# api.update_status("test twit!");
-# api = setup_api()
-# dir = os.path.dirname(os.path.abspath(__file__))
-# file_path = os.path.join(dir, 'data', 'sample.png')
-# status = 'Test Media Upload'
-# api.status_update_with_media(file_path, status=status)
-    
+   
 
 
 
