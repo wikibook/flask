@@ -17,9 +17,11 @@ try:
     twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
 
     photo = open('Desert.jpg', 'rb')
-    result = twitter.update_status_with_media(status='twit with image!', media=photo)
 
-    print (json.dumps(result, indent=2, sort_keys=True))
+    response = twitter.upload_media(media=photo)
+    twitter.update_status(status='twit with image!', media_ids=[response['media_id']])
+
+    print (json.dumps(response, indent=2, sort_keys=True))
     
 except TwythonError as e:
     print (e)
