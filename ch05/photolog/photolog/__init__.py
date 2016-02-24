@@ -69,7 +69,7 @@ def create_app(config_filepath='resource/config.cfg'):
     from photolog.controller import login
     from photolog.controller import photo_show
     from photolog.controller import photo_upload
-    from photolog.controller import register_upload
+    from photolog.controller import register_user
     from photolog.controller import twitter
     
     from photolog.photolog_blueprint import photolog
