@@ -48,7 +48,7 @@ def create_app(config_filepath='resource/config.cfg'):
     from photolog.photolog_config import PhotologConfig
     photolog_app.config.from_object(PhotologConfig)
     photolog_app.config.from_pyfile(config_filepath, silent=True)
-    print_settings(photolog_app.config.iteritems())
+    print_settings(photolog_app.config.items())
         
     # 로그 초기화
     from photolog.photolog_logger import Log
@@ -69,7 +69,7 @@ def create_app(config_filepath='resource/config.cfg'):
     from photolog.controller import login
     from photolog.controller import photo_show
     from photolog.controller import photo_upload
-    from photolog.controller import register_upload
+    from photolog.controller import register_user
     from photolog.controller import twitter
     
     from photolog.photolog_blueprint import photolog
