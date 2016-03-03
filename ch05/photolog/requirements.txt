@@ -7,5 +7,5 @@ SQLAlchemy
 Redis
 WTForms
 twython
-PIL
+pillow
 
