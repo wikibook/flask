@@ -96,7 +96,7 @@ def upload_photo():
                 filename = \
                     secure_filename(username + 
                                     '_' + 
-                                    unicode(uuid.uuid4()) +
+                                    str(uuid.uuid4()) +
                                     "." + 
                                     ext)
                 
