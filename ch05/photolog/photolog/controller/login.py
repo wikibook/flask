@@ -5,7 +5,7 @@
 
     로그인 확인 데코레이터와 로그인 처리 모듈.
 
-    :copyright: (c) 2013 by 4mba.
+    :copyright: (c) 2013-2016 by 4mba.
     :license: MIT LICENSE 2.0, see license for more details.
 """
 

@@ -5,7 +5,7 @@
 
     photolog 어플리케이션을 사용할 사용자 정보에 대한 model 모듈.
 
-    :copyright: (c) 2013 by 4mba.
+    :copyright: (c) 2013-2016 by 4mba.
     :license: MIT LICENSE 2.0, see license for more details.
 """
 

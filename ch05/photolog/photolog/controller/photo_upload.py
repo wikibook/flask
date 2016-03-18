@@ -6,7 +6,7 @@
     파일 업로드 모듈.
     사진을 서버의 upload 디렉토리에 저장함.
 
-    :copyright: (c) 2013 by 4mba.
+    :copyright: (c) 2013-2016 by 4mba.
     :license: MIT LICENSE 2.0, see license for more details.
 """
 

@@ -5,7 +5,7 @@
 
     업로드된 사진을 보여준다.
     
-    :copyright: (c) 2013 by 4mba.
+    :copyright: (c) 2013-2016 by 4mba.
     :license: MIT LICENSE 2.0, see license for more details.
 """
 

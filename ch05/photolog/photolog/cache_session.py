@@ -7,7 +7,7 @@
     로컬 어플리케이션 서버의 메모리를 이용하는 SimpleCache 버전과
     RedisCache를 이용해서 가용성을 보장하는 버전 두가지를 제공함.
 
-    :copyright: (c) 2013 by 4mba.
+    :copyright: (c) 2013-2016 by 4mba.
     :license: MIT LICENSE 2.0, see license for more details.
 """
 

@@ -6,7 +6,7 @@
     photolog 디폴트 설정 모듈.
     photolog 어플리케이션에서 사용할 디폴트 설정값을 담고 있는 클래스를 정의함.
 
-    :copyright: (c) 2013 by 4mba.
+    :copyright: (c) 2013-2016 by 4mba.
     :license: MIT LICENSE 2.0, see license for more details.
 """
 

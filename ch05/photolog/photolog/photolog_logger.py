@@ -6,7 +6,7 @@
     photolog 로그 모듈. 
     photolog 어플리케이션에서 사용할 공통 로그 객체를 생성.
 
-    :copyright: (c) 2013 by 4mba.
+    :copyright: (c) 2013-2016 by 4mba.
     :license: MIT LICENSE 2.0, see license for more details.
 """
 
