@@ -33,8 +33,8 @@ class PhotologConfig(object):
     #: 디폴트 SQLAlchemy trace log 설정
     DB_LOG_FLAG = 'True'
     #: 트위터에 등록된 photolog 어플리케이션 인증키 (https://dev.twitter.com/)
-    TWIT_APP_KEY    = 'tha1vwfKSJ0jlDcdCryvag'
-    TWIT_APP_SECRET = '84qXU6uv1XyDbM780civoBA7U4mnmKEQ0FnaBQn63go'
+    TWIT_APP_KEY    = '966cQr7e1mPx6Axt20uh5gwfR'
+    TWIT_APP_SECRET = 'HLWQg8DtgMfnEArsnHsIX0DfetozH16vfMNh49nwH4hu1VdVH6'
     #: 트위터 연동에 대한 콜백 서버 URL(포토로그 어플리케이션 루트 경로)
     #: 로컬호스트에서 테스트를 가정하여 localhost로 설정(환경에 맞춰 변경필요) 
     TWIT_CALLBACK_SERVER = 'http://localhost:5000'
