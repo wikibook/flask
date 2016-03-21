@@ -5,14 +5,14 @@
   {% if error %}<div class=error><strong>Error:</strong> {{ error }}</div>{% endif %}
   <form action="" method=post>
     <dl>
-      <dt>Username:
-      <dd><input type=text name=username size=30 value="{{ request.form.username }}">
-      <dt>E-Mail:
-      <dd><input type=text name=email size=30 value="{{ request.form.email }}">
-      <dt>Password:
-      <dd><input type=password name=password size=30>
-      <dt>Password <small>(repeat)</small>:
-      <dd><input type=password name=password2 size=30>
+      <dt>Username:</dt>
+      <dd><input type=text name=username size=30 value="{{ request.form.username }}"></dd>
+      <dt>E-Mail:<dt>
+      <dd><input type=text name=email size=30 value="{{ request.form.email }}"></dd>
+      <dt>Password:</dt>
+      <dd><input type=password name=password size=30></dd>
+      <dt>Password <small>(repeat)</small>:</dt>
+      <dd><input type=password name=password2 size=30></dd>
     </dl>
     <div class=actions><input type=submit value="Sign Up"></div>
   </form>
