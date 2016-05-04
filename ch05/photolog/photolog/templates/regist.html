@@ -6,7 +6,7 @@
 
 <!-- 사용자 등록 폼 -->
 {% block content %}
-<script type=text/javascript>
+<script type=text/javascript xmlns="http://www.w3.org/1999/html">
   $(function() {
     var submit_form = function(e) {
       if ($('input[name=username]').val() != '') {
@@ -68,52 +68,57 @@
 {% from "_formhelpers.html" import render_field %}
 <form class="form-horizontal" action='#' method="POST">
 
-    <div id="regist" class="modal fade" role="dialog"  data-keyboard="false" data-backdrop="static" style="position:absolute; overflow:auto;">
+    <div id="regist" class="modal fade" role="dialog"  data-keyboard="false" data-backdrop="static" style="overflow:auto;">
+
+        <div class="modal-dialog" style="vertical-align: middle;">
+        <div class="modal-content">
 
     	<div class="modal-header">
-            <button class="close" data-dismiss="modal" onclick="javascript:location.replace('{{ url_for('photolog.show_all') }}');"><i class="icon-remove"></i> &nbsp;</button>
-    		<h3 id="myModalLabel">&nbsp;<i class="icon-user"></i>&nbsp;{% if user %}회원 정보 수정{% else %}회원 가입{% endif %}</h3>
+            <button class="close" data-dismiss="modal" onclick="javascript:location.replace('{{ url_for('photolog.show_all') }}');"><i class="fa fa-remove"></i> &nbsp;</button>
+    		<h3 id="myModalLabel">&nbsp;<i class="fa fa-user"></i>&nbsp;{% if user %}회원 정보 수정{% else %}회원 가입{% endif %}</h3>
     	</div>
     	            
     	<div class="modal-body">
     		  <fieldset>
-    			<div class="control-group">
+    			<div class="form-group">
     			  <!-- Username -->
-    			  <label class="control-label"  for="username">아이디</label>
-    			  <div class="controls">
+    			  <label class="col-sm-3 control-label"  for="username">아이디</label>
+    			  <div class="col-sm-9">
     			    {% if user %}
-    			     {{ render_field(form.username, class="input-xlarge", placeholder="문자와 숫자로 공백없이 입력해주세요.", readOnly="True")  }}
+    			     {{ render_field(form.username, class="input-large", placeholder="문자와 숫자로 공백없이 입력해주세요.", readOnly="True")  }}
     			    {% else %}
-    			    <div class="input-append">
-    			      {{ render_field(form.username, class="input-xlarge", placeholder="문자와 숫자로 공백없이 입력해주세요.") }}
-    			      <button id="username_check" class="btn btn-primary">확인</button>
+    			    <div class="input-group">
+    			      {{ render_field(form.username, class="form-control", placeholder="문자와 숫자로 공백없이 입력해주세요.", autofocus=true) }}
+                        <div class="input-group-btn">
+                            <button id="username_check" class="btn btn-primary">확인</button>
+                        </div>
     			      {{ render_field(form.username_check) }}
     			    </div>
     			    {% endif %}
     			  </div>
     			</div>
     		 
-    		    <div class="control-group">
+    		    <div class="form-group">
     		      <!-- E-mail -->
-    		      <label class="control-label" for="email">E-mail</label>
-    		      <div class="controls">
-                    {{ render_field(form.email, class="input-xlarge", placeholder="형식에 맞게 이메일을 입력해주세요.") }}
+    		      <label class="col-sm-3 control-label" for="email">E-mail</label>
+    		      <div class="col-sm-9">
+                    {{ render_field(form.email, class="input-large", placeholder="형식에 맞게 이메일을 입력해주세요.") }}
     		      </div>
     		    </div>
     		 
-    		    <div class="control-group">
+    		    <div class="form-group">
     		      <!-- Password-->
-    		      <label class="control-label" for="password">비밀번호</label>
-    		      <div class="controls">
-    		        {{ render_field(form.password, class="input-xlarge", placeholder="최소한 4 글자 이상으로 해주세요.") }}
+    		      <label class="col-sm-3 control-label" for="password">비밀번호</label>
+    		      <div class="col-sm-9">
+    		        {{ render_field(form.password, class="input-large", placeholder="최소한 4 글자 이상으로 해주세요.") }}
     		      </div>
     		    </div>
     		 
-    		    <div class="control-group">
+    		    <div class="form-group">
     		      <!-- Password -->
-    		      <label class="control-label"  for="password_confirm">비밀번호(재입력)</label>
-    		      <div class="controls">
-    		        {{ render_field(form.password_confirm, class="input-xlarge", placeholder="비밀번호를 다시 입력해주세요.") }}
+    		      <label class="col-sm-3 control-label" for="password_confirm">비밀번호(재입력)</label>
+    		      <div class="col-sm-9">
+    		        {{ render_field(form.password_confirm, class="input-large", placeholder="비밀번호를 다시 입력해주세요.") }}
     		      </div>
     		    </div>
     		 
@@ -125,6 +130,8 @@
             {% if user %}<a href="javascript:unregist();" class="btn btn-primary">서비스 탈퇴</a>{% endif %}
     	</div> <!-- modal-footer -->
 
+    </div> <!-- modal content -->
+    </div> <!-- modal dialogue -->
     </div>
 </form>
 

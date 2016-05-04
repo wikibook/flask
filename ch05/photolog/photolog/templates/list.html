@@ -39,13 +39,13 @@
                   <td class="valign-middle">{{ photo.upload_date.strftime('%Y-%m-%d %H:%M') }}</td>
                   <td class="valign-middle">
                       <a class="btn btn-success btn-mini" href="javascript:update_photo_form('{{ url_for('photolog.update_photo_form', photolog_id=photo.id)}}');">
-                          <i class="icon-pencil"></i>
+                          <i class="fa fa-pencil"></i>
                       </a>  
                       <a class="btn btn-warning btn-mini" href="javascript:remove('{{ url_for('photolog.remove', photolog_id=photo.id)}}');">
-                          <i class="icon-remove"></i>
+                          <i class="fa fa-remove"></i>
                       </a>
                       <a class="btn btn-primary btn-mini" href="javascript:twit('{{ url_for('photolog.send', photolog_id=photo.id)}}');" >
-                          <i class="icon-twitter"></i>
+                          <i class="fa fa-twitter"></i>
                       </a>
                   </td>
                 </tr>

@@ -7,40 +7,40 @@
 <!-- File Upload Form -->
 {% block content %}
 
-    <div class="container-fluid span12">
+    <div class="container col-md-12">
 		
-        <div class="row-fluid"> <!-- Begin photo data input -->
-            <div class="span4 well" style="height: 420px;"> <!-- first column begin -->
+        <div class="row"> <!-- Begin photo data input -->
+            <div class="col-md-4 well" style="height: 420px;"> <!-- first column begin -->
                 {% from "_formhelpers.html" import render_field %}
-                <form id="upload" name="upload" class="form-horizontal span12" method="POST" action="{% if photo %}{{ url_for('photolog.update_photo', photolog_id=photo.id) }}{% else %}{{ url_for('photolog.upload_photo') }}{% endif %}" enctype="multipart/form-data" >
-                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                <form id="upload" name="upload" class="form-horizontal col-md-12" method="POST" action="{% if photo %}{{ url_for('photolog.update_photo', photolog_id=photo.id) }}{% else %}{{ url_for('photolog.upload_photo') }}{% endif %}" enctype="multipart/form-data" >
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
                         {% if photo %}
-                            <div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;">
+                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
                                 <a href="{{url_for('photolog.download_photo', photolog_id=photo.id)}}" target="_blank">
                                     <img src="{{url_for('photolog.download_thumbnail', photolog_id=photo.id)}}" width="200" height="150">
                                 </a>
                             </div>
                         {% else %}
-                            <div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;"> </div>
+                            <div class="fileinput-preview thumbnail" style="width: 200px; height: 150px;"> </div>
                             <div>
                                 <span class="btn btn-file btn-info">
-                                    <span class="fileupload-new"> <i class="icon-picture"></i> 사진찾기</span>
-                                    <span class="fileupload-exists"> <i class="icon-pencil"></i> 변경</span>
+                                    <span class="fileinput-new"> <i class="fa fa-picture-o"></i> 사진찾기</span>
+                                    <span class="fileinput-exists"> <i class="fa fa-pencil"></i> 변경</span>
                                      {{ render_field(form.photo) }}
                                       <!--  <input id="photo" name="photo" type="file" /> -->
                                 </span>
-                                <a href="#" class="btn fileupload-exists" data-dismiss="fileupload"> <i class="icon-remove"></i> 지우기</a>
+                                <a href="#" class="btn fileinput-exists" data-dismiss="fileinput"> <i class="fa fa-remove"></i> 지우기</a>
                             </div>
                         {% endif %}
                     </div>
                     
                     <div> <!-- TAG, COMMENT FORM-->
                         <p>
-                            {{ render_field(form.tag, class="input-large input-block-level", placeholder="Tag") }}
+                            {{ render_field(form.tag, class="input-lg form-cotrol", placeholder="Tag") }}
                         </p>
                         
                         <p>
-                            {{ render_field(form.comment, class="input-block-level", placeholder="Comment", row="5") }}
+                            {{ render_field(form.comment, class="form-control", placeholder="Comment", row="5") }}
                         </p>
                     </div>
 
@@ -52,28 +52,32 @@
                 </form>        
             </div> <!-- end of first column -->
         
-            <div class="span8 well" style="height: 420px;" > <!-- begin map data -->
-            
-                <div class="input-append" style="margin-bottom: 10px;">
-                    <input  id="address" name="address" type="text" placeholder="지역이름" style="width: 110px;">
-                    <button id="address-search" class="btn btn-success" type="button">
-                        <i class="icon-search"></i> 검색
-                    </button>
-                    <button id="current-location" class="btn btn-primary" type="button" onclick="javascript:currentLocation();">
-                        <i class="icon-map-marker"></i> 현재
-                    </button>
+            <div class="col-md-8 well" style="height: 420px;" > <!-- begin map data -->
+
+                <div class="form-group">
+                    <div class="input-group" style="margin-bottom: 10px;">
+                        <input  id="address" name="address" type="text" placeholder="지역이름" style="width: 110px;">
+                        <div class="input-group-btn">
+                            <button id="address-search" class="btn btn-success" type="button">
+                                <i class="fa fa-search"></i> 검색
+                            </button>
+                            <button id="current-location" class="btn btn-primary" type="button" onclick="javascript:currentLocation();">
+                                <i class="fa fa-map-marker"></i> 현재
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                
+
                 <div id="photo-location" class="photo_location span12"> </div>
     
             </div> <!-- end of map-data  -->      
         </div> <!-- end of first row -->
 
             
-        <div class="row-fluid">
-            <div class="span12" style="margin-top: -10px;">
+        <div class="row">
+            <div class="col-md-12" style="margin-top: -10px;">
                 <div>
-                   <button class="btn btn-block btn-primary span4" onclick="javacscript:$('#upload').submit();"><i class="icon-save"></i> 저장하기</button>
+                   <button class="btn btn-block btn-primary col-md-4" onclick="javacscript:$('#upload').submit();"><i class="fa fa-save"></i> 저장하기</button>
                 </div>
             </div>
         </div>
