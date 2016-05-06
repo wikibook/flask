@@ -21,7 +21,7 @@
                                 </a>
                             </div>
                         {% else %}
-                            <div class="fileinput-preview thumbnail" style="width: 200px; height: 150px;"> </div>
+                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
                             <div>
                                 <span class="btn btn-file btn-info">
                                     <span class="fileinput-new"> <i class="fa fa-picture-o"></i> 사진찾기</span>
@@ -36,11 +36,11 @@
                     
                     <div> <!-- TAG, COMMENT FORM-->
                         <p>
-                            {{ render_field(form.tag, class="input-lg form-cotrol", placeholder="Tag") }}
+                            {{ render_field(form.tag, class="col-xs-12 input-sm form-cotrol", placeholder="Tag") }}
                         </p>
                         
                         <p>
-                            {{ render_field(form.comment, class="form-control", placeholder="Comment", row="5") }}
+                            {{ render_field(form.comment, class="col-xs-12 input-sm form-control", placeholder="Comment", row="5") }}
                         </p>
                     </div>
 
@@ -56,7 +56,7 @@
 
                 <div class="form-group">
                     <div class="input-group" style="margin-bottom: 10px;">
-                        <input  id="address" name="address" type="text" placeholder="지역이름" style="width: 110px;">
+                        <input id="address" name="address" type="text" placeholder="지역이름" style="width: 110px;">
                         <div class="input-group-btn">
                             <button id="address-search" class="btn btn-success" type="button">
                                 <i class="fa fa-search"></i> 검색

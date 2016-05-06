@@ -21,6 +21,7 @@
 
 		<link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}" type="text/css" media="screen" title="photolog" charset="UTF-8" />
 		<link rel="stylesheet" href="{{ url_for('static',filename='css/font-awesome.min.css') }}" type="text/css" media="screen" title="photolog" charset="UTF-8" />
+		<link rel="stylesheet" href="{{ url_for('static',filename='css/jasny-fileinput.css') }}" type="text/css" media="screen" title="photolog" charset="UTF-8" />
         <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}" type="text/css" media="screen" title="photolog" charset="UTF-8" />
         <link rel="stylesheet" href="{{ url_for('static',filename='css/placeholder-error.css') }}" type="text/css" media="screen" title="photolog" charset="UTF-8" />
 
@@ -29,11 +30,9 @@
 		<![endif]-->
 
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.3.1/js/fileinput.min.js"></script>
-
         <script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
  		<script type="text/javascript" src="{{ url_for('static',filename='js/bootbox.min.js') }}"></script>
+ 		<script type="text/javascript" src="{{ url_for('static',filename='js/jasny-fileinput.js') }}"></script>
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 		<script type="text/javascript" src="{{ url_for('static',filename='js/gmaps.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static',filename='js/exif.js') }}"></script>
@@ -60,19 +59,20 @@
             <li class="active"><a  href="{{ url_for('photolog.show_all') }}" ><i class="fa fa-th-list fa-large"></i> 사진 목록 보기 </a></li>
             <li class="active"><a  href="{{ url_for('photolog.upload_photo_form') }}" ><i class="fa fa-camera-retro fa-large"> 사진 올리기 </i></a></li>
           </ul>
-
           <ul class="nav navbar-nav navbar-right ">
             <li><a href="{% if session.__contains__('user_info') %}{{ url_for('photolog.update_user_form', username=session.user_info.username) }}{% endif %}"><i class="fa fa-pencil"></i> 개인정보 수정</a></li>
             <li><a id="logout" href="#" class="navbar-link"><i class="fa fa-user"></i> Logout</a></li>
           </ul>
-          <form role="search" class="navbar-form pull-left" action="{{ url_for('photolog.search_photo') }}" method="POST">
+          <form role="form" class="form-inline navbar-form pull-left" action="{{ url_for('photolog.search_photo') }}" method="POST">
             <div class="input-group">
-                <input type="Search" name="search_word" class="input-sm form-control search-form" placeholder="Search" {% if search_word %} value='{{search_word}}' {% endif %}>
-                   <div class="input-group-btn">
-                       <button type="submit" class="btn-sm btn-primary search-btn">
-                       <i class="fa fa-search"></i>
-                       </button>
-                   </div>
+                <input type="text" name="search_word" class="input-sm form-control search-form" placeholder="Search" {% if search_word %} value='{{search_word}}' {% endif %}>
+                <div class="input-group-btn">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn-sm btn-primary search-btn">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
             </div>
           </form>
 

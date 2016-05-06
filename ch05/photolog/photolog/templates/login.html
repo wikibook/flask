@@ -16,7 +16,7 @@
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <legend>&nbsp;<i class="fa fa-user"></i> 로그인 하기</legend>
+                        <h4 class="modal-title"><i class="fa fa-user"></i> 로그인 하기</h4>
                         {% if error %}
                             <div class="alert alert-error">
                                 <a class="close" data-dismiss="alert" href="#">×</a>{{ error }}
@@ -71,6 +71,7 @@
     <script type="text/javascript">
 
       $('#login-form').modal('show');
+      $('#username').focus();
 
       function confirmSave(checkbox) {
         var isRemember;
