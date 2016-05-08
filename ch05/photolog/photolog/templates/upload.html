@@ -10,7 +10,7 @@
     <div class="container col-md-12">
 		
         <div class="row"> <!-- Begin photo data input -->
-            <div class="col-md-4 well" style="height: 420px;"> <!-- first column begin -->
+            <div class="well well-sm col-md-4" style="height: 410px; margin-left: -5px; margin-right: 5px"> <!-- first column begin -->
                 {% from "_formhelpers.html" import render_field %}
                 <form id="upload" name="upload" class="form-horizontal col-md-12" method="POST" action="{% if photo %}{{ url_for('photolog.update_photo', photolog_id=photo.id) }}{% else %}{{ url_for('photolog.upload_photo') }}{% endif %}" enctype="multipart/form-data" >
                     <div class="fileinput fileinput-new" data-provides="fileinput">
@@ -34,14 +34,11 @@
                         {% endif %}
                     </div>
                     
-                    <div> <!-- TAG, COMMENT FORM-->
-                        <p>
-                            {{ render_field(form.tag, class="col-xs-12 input-sm form-cotrol", placeholder="Tag") }}
-                        </p>
-                        
-                        <p>
-                            {{ render_field(form.comment, class="col-xs-12 input-sm form-control", placeholder="Comment", row="5") }}
-                        </p>
+                    <div class="form-group col-md-12"> <!-- TAG Input-->
+                        {{ render_field(form.tag, class="col-md-12 input-md form-cotrol", placeholder="Tag") }}
+                    </div>
+                    <div class="form-group col-md-12"> <!-- COMMENT Input-->
+                        {{ render_field(form.comment, class="col-md-12 input-md form-control", placeholder="Comment", row="5") }}
                     </div>
 
                     <div>
@@ -52,33 +49,29 @@
                 </form>        
             </div> <!-- end of first column -->
         
-            <div class="col-md-8 well" style="height: 420px;" > <!-- begin map data -->
-
+            <div class="well well-sm col-md-8" style="height: 410px;" > <!-- begin map data -->
                 <div class="form-group">
                     <div class="input-group" style="margin-bottom: 10px;">
-                        <input id="address" name="address" type="text" placeholder="지역이름" style="width: 110px;">
-                        <div class="input-group-btn">
+                        <span class="input-group-btn col-md-4">
+                            <input id="address" name="address" class="form-control input-md" type="text" placeholder="지역이름" style="width: 110px;">
+
                             <button id="address-search" class="btn btn-success" type="button">
                                 <i class="fa fa-search"></i> 검색
-                            </button>
-                            <button id="current-location" class="btn btn-primary" type="button" onclick="javascript:currentLocation();">
+                           </button>
+                           <button id="current-location" class="btn btn-primary" type="button" onclick="javascript:currentLocation();">
                                 <i class="fa fa-map-marker"></i> 현재
-                            </button>
-                        </div>
+                           </button>
+                        </span>
                     </div>
                 </div>
-
-                <div id="photo-location" class="photo_location span12"> </div>
-    
-            </div> <!-- end of map-data  -->      
+                <div id="photo-location" class="photo_location col-md-12"> </div>
+            </div> <!-- end of map-data  -->
         </div> <!-- end of first row -->
 
             
-        <div class="row">
-            <div class="col-md-12" style="margin-top: -10px;">
-                <div>
-                   <button class="btn btn-block btn-primary col-md-4" onclick="javacscript:$('#upload').submit();"><i class="fa fa-save"></i> 저장하기</button>
-                </div>
+        <div class="row"> <!-- Begin Save button row -->
+            <div class="col-md-4" style="margin-top: -10px;">
+               <button class="btn btn-block btn-primary col-md-12" onclick="javacscript:$('#upload').submit();"><i class="fa fa-save"></i> 저장하기</button>
             </div>
         </div>
 

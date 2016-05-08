@@ -80,45 +80,8 @@
       </div><!-- /.container -->
   </nav>
 
-  <!--
-
-	<div id="header-menu" class="col-md-12" style="width: 100%;">
-		<div class="navbar navbar-inverse navbar-fixed-top navbar-default">
-	      <div class="container">
-	        <div class="container">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	            <span class="fa fa-bar"></span>
-	            <span class="fa fa-bar"></span>
-	            <span class="fa fa-bar"></span>
-	          </button>
-              <a class="navbar-brand" href="{{ url_for('photolog.index') }}">&nbsp;<i class="fa fa-picture-o "></i> Photolog</a>
-              <div class="navbar-collapse collapse"></div>
-	             <ul class="nav">
-		        		<li class="active"><a  href="{{ url_for('photolog.show_map') }}" ><i class="fa fa-map-marker fa-large"></i> 지도에서 사진보기 </a></li>
-		        		<li class="active"><a  href="{{ url_for('photolog.show_all') }}" ><i class="fa fa-th-list fa-large"></i> 사진 목록 보기 </a></li>
-		        		<li class="active"><a  href="{{ url_for('photolog.upload_photo_form') }}" ><i class="fa fa-camera-retro fa-large"> 사진 올리기 </i></a></li>
-			     </ul>
-	            <ul class="nav pull-right">
-                    <li><a href="{% if session.__contains__('user_info') %}{{ url_for('photolog.update_user_form', username=session.user_info.username) }}{% endif %}"><i class="fa fa-pencil"></i> 개인정보 수정</a></li>
-                    <li><a id="logout" href="#" class="navbar-link"><i class="fa fa-user"></i> Logout</a></li>
-				</ul>
-                <form class="navbar-form pull-left form-search" action="{{ url_for('photolog.search_photo') }}" method="POST">
-					<div class="input-group">
-						<input type="text" name="search_word" class="input-sm search-query" placeholder="Search" {% if search_word %} value='{{search_word}}' {% endif %}>
-						<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-					</div>
-				</form>
-	          </div> ==/.nav-collapse ==
-	        </div>
-	      </div>
-	    </div>
-	</div>  == header ==
-
-    -->
-
-
 	<!-- content-->
-	<div id="photolog-content" class="col-md-12" style="padding-top: 50px; padding-bottom: 30px;">
+	<div id="photolog-content" class="col-md-12" style="padding-top: 0px; padding-bottom: 30px;">
 
     		{% block content %}{% endblock %}
 

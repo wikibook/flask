@@ -21,7 +21,7 @@ body .modal-login {
 }
 
 #map-large {
-  height:500px;
+  height:450px;
   background:#6699cc;
 }
 
@@ -129,5 +129,11 @@ th {
  .search-btn {
     border-radius: 0px 30px 30px 0px;
     cursor:pointer;
+}
+
+
+
+.table > tbody > tr > td {
+     vertical-align: middle;
 }
 

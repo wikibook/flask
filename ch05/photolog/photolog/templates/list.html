@@ -7,8 +7,8 @@
 <!-- 업로드된 사진을 보여준다 -->
 {% block content %}
 
-  <div class="row-fluid span12">
-	<div class="span12 valign-middle">
+  <div class="col-md-12 row">
+	<div class="col-md-12 valign-middle">
             <table class="table table-hover text-center" align="center">
               <thead>
                 <tr>
@@ -26,25 +26,25 @@
               
 		      {% for photo in photos %}
                 <tr>
-                  <td class="valign-middle">{{ loop.index }}</td>
-                  <td class="valign-middle"> 
-				    <div class="fileupload-new thumbnail" style="width: 100px; height: 80px;">
-				    	<img src="{{ url_for('photolog.download_thumbnail', photolog_id=photo.id) }}" onclick="javascript:show('{{ url_for('photolog.download_photo', photolog_id=photo.id) }}');" style="width: 95px; height: 75px;"/>
+                  <td>{{ loop.index }}</td>
+                  <td>
+				    <div class="fileinput-new thumbnail" style="width: 100px; height: 80px;">
+				    	<img src="{{ url_for('photolog.download_thumbnail', photolog_id=photo.id) }}" onclick="javascript:show('{{ url_for('photolog.download_photo', photolog_id=photo.id) }}');" style="width: 95px; height: 70px;"/>
 				    </div>
                   </td>
-                  <td class="valign-middle"><span class="badge badge-success">{{ sizeof_fmt(photo.filesize) }}</span></td>
-                  <td class="valign-middle"><span class="label label-info">{{ photo.tag }}</span></td>
-                  <td class="valign-middle">{{ photo.comment }}</td>
-                  <td class="valign-middle">{{ photo.taken_date.strftime('%Y-%m-%d %H:%M') }}</td>
-                  <td class="valign-middle">{{ photo.upload_date.strftime('%Y-%m-%d %H:%M') }}</td>
-                  <td class="valign-middle">
-                      <a class="btn btn-success btn-mini" href="javascript:update_photo_form('{{ url_for('photolog.update_photo_form', photolog_id=photo.id)}}');">
+                  <td><span class="badge badge-success">{{ sizeof_fmt(photo.filesize) }}</span></td>
+                  <td><span class="label label-info">{{ photo.tag }}</span></td>
+                  <td>{{ photo.comment }}</td>
+                  <td>{{ photo.taken_date.strftime('%Y-%m-%d %H:%M') }}</td>
+                  <td>{{ photo.upload_date.strftime('%Y-%m-%d %H:%M') }}</td>
+                  <td>
+                      <a class="btn btn-success btn-xs" href="javascript:update_photo_form('{{ url_for('photolog.update_photo_form', photolog_id=photo.id)}}');">
                           <i class="fa fa-pencil"></i>
                       </a>  
-                      <a class="btn btn-warning btn-mini" href="javascript:remove('{{ url_for('photolog.remove', photolog_id=photo.id)}}');">
+                      <a class="btn btn-warning btn-xs" href="javascript:remove('{{ url_for('photolog.remove', photolog_id=photo.id)}}');">
                           <i class="fa fa-remove"></i>
                       </a>
-                      <a class="btn btn-primary btn-mini" href="javascript:twit('{{ url_for('photolog.send', photolog_id=photo.id)}}');" >
+                      <a class="btn btn-primary btn-xs" href="javascript:twit('{{ url_for('photolog.send', photolog_id=photo.id)}}');" >
                           <i class="fa fa-twitter"></i>
                       </a>
                   </td>
@@ -58,8 +58,8 @@
 	
 
         {% if pagination %}
-            <div class="row-fluid" align="center">
-                <div class="span12">
+            <div class="row" align="center">
+                <div class="col-md-12">
                 <p>
                     {% from "_pagehelpers.html" import render_pagination %}
                     {{ render_pagination(pagination) }}
