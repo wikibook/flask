@@ -82,16 +82,18 @@
     		  <fieldset>
     			<div class="form-group">
     			  <!-- Username -->
-    			  <label class="col-sm-3 control-label"  for="username">아이디</label>
-    			  <div class="col-sm-9">
+    			  <label class="col-md-3 control-label"  for="username">아이디</label>
+    			  <div class="col-md-9">
     			    {% if user %}
-    			     {{ render_field(form.username, class="input-large", placeholder="문자와 숫자로 공백없이 입력해주세요.", readOnly="True")  }}
+    			      {{ render_field(form.username, class="form-control input-md col-md-10", placeholder="문자와 숫자로 공백없이 입력해주세요.", readOnly="True")  }}
     			    {% else %}
-    			    <div class="input-group">
-    			      {{ render_field(form.username, class="form-control", placeholder="문자와 숫자로 공백없이 입력해주세요.", autofocus=true) }}
-                        <div class="input-group-btn">
+    			    <div class="input-group col-md-12">
+    			      {{ render_field(form.username, class="form-control input-md col-md-10", placeholder="문자와 숫자로 공백없이 입력해주세요.", autofocus=true) }}
+                      <div class="input-group-btn">
+                        <span class="input-group-btn">
                             <button id="username_check" class="btn btn-primary">확인</button>
-                        </div>
+                        </span>
+                      </div>
     			      {{ render_field(form.username_check) }}
     			    </div>
     			    {% endif %}
@@ -100,25 +102,25 @@
     		 
     		    <div class="form-group">
     		      <!-- E-mail -->
-    		      <label class="col-sm-3 control-label" for="email">E-mail</label>
-    		      <div class="col-sm-9">
-                    {{ render_field(form.email, class="input-large", placeholder="형식에 맞게 이메일을 입력해주세요.") }}
+    		      <label class="col-md-3 control-label" for="email">E-mail</label>
+    		      <div class="col-md-9">
+                    {{ render_field(form.email, class="form-control input-md col-md-10", placeholder="형식에 맞게 이메일을 입력해주세요.") }}
     		      </div>
     		    </div>
     		 
     		    <div class="form-group">
     		      <!-- Password-->
-    		      <label class="col-sm-3 control-label" for="password">비밀번호</label>
-    		      <div class="col-sm-9">
-    		        {{ render_field(form.password, class="input-large", placeholder="최소한 4 글자 이상으로 해주세요.") }}
+    		      <label class="col-md-3 control-label" for="password">비밀번호</label>
+    		      <div class="col-md-9">
+    		        {{ render_field(form.password, class="form-control input-md col-md-10", placeholder="최소한 4 글자 이상으로 해주세요.") }}
     		      </div>
     		    </div>
     		 
     		    <div class="form-group">
     		      <!-- Password -->
     		      <label class="col-sm-3 control-label" for="password_confirm">비밀번호(재입력)</label>
-    		      <div class="col-sm-9">
-    		        {{ render_field(form.password_confirm, class="input-large", placeholder="비밀번호를 다시 입력해주세요.") }}
+    		      <div class="col-md-9">
+    		        {{ render_field(form.password_confirm, class="form-control input-md col-md-10", placeholder="비밀번호를 다시 입력해주세요.") }}
     		      </div>
     		    </div>
     		 

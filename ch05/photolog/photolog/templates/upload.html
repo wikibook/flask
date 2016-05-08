@@ -10,7 +10,7 @@
     <div class="container col-md-12">
 		
         <div class="row"> <!-- Begin photo data input -->
-            <div class="well well-sm col-md-4" style="height: 410px; margin-left: -5px; margin-right: 5px"> <!-- first column begin -->
+            <div class="well well-sm col-md-4" style="height: 420px; margin-left: -5px; margin-right: 5px"> <!-- first column begin -->
                 {% from "_formhelpers.html" import render_field %}
                 <form id="upload" name="upload" class="form-horizontal col-md-12" method="POST" action="{% if photo %}{{ url_for('photolog.update_photo', photolog_id=photo.id) }}{% else %}{{ url_for('photolog.upload_photo') }}{% endif %}" enctype="multipart/form-data" >
                     <div class="fileinput fileinput-new" data-provides="fileinput">
@@ -49,7 +49,7 @@
                 </form>        
             </div> <!-- end of first column -->
         
-            <div class="well well-sm col-md-8" style="height: 410px;" > <!-- begin map data -->
+            <div class="well well-sm col-md-8" style="height: 420px;" > <!-- begin map data -->
                 <div class="form-group">
                     <div class="input-group" style="margin-bottom: 10px;">
                         <span class="input-group-btn col-md-4">
@@ -79,7 +79,9 @@
 	</div> <!-- End of Container -->
 
 	<script type="text/javascript">
-	
+
+        $('#tag').focus();
+
         // 기본위치로 서울 덕수궁을 지도에 표시한다.
         map = new GMaps({
             zoom : 17,
