@@ -50,17 +50,16 @@
             </div> <!-- end of first column -->
         
             <div class="well well-sm col-md-8" style="height: 420px;" > <!-- begin map data -->
-                <div class="form-group">
-                    <div class="input-group" style="margin-bottom: 10px;">
-                        <span class="input-group-btn col-md-4">
-                            <input id="address" name="address" class="form-control input-md" type="text" placeholder="지역이름" style="width: 110px;">
-
+                <div class="form-group col-md-8">
+                    <div class="input-group input-group-btn" style="margin-bottom: 10px;">
+                        <input id="address" name="address" class="form-control" type="text" placeholder="지역이름" style="width: 110px;">
+                        <span class="input-group-btn">
                             <button id="address-search" class="btn btn-success" type="button">
                                 <i class="fa fa-search"></i> 검색
-                           </button>
-                           <button id="current-location" class="btn btn-primary" type="button" onclick="javascript:currentLocation();">
+                            </button>
+                            <button id="current-location" class="btn btn-primary" type="button" onclick="javascript:currentLocation();">
                                 <i class="fa fa-map-marker"></i> 현재
-                           </button>
+                            </button>
                         </span>
                     </div>
                 </div>

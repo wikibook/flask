@@ -66,13 +66,11 @@
           <form role="form" class="form-inline navbar-form pull-left" action="{{ url_for('photolog.search_photo') }}" method="POST">
             <div class="input-group">
                 <input type="text" name="search_word" class="input-sm form-control search-form" placeholder="Search" {% if search_word %} value='{{search_word}}' {% endif %}>
-                <div class="input-group-btn">
-                    <span class="input-group-btn">
-                        <button type="submit" class="btn-sm btn-primary search-btn">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </span>
-                </div>
+                <span class="input-group-btn">
+                    <button type="submit" class="btn-sm btn-primary search-btn">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
             </div>
           </form>
 

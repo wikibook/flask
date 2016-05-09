@@ -88,8 +88,8 @@
     			      {{ render_field(form.username, class="form-control input-md col-md-10", placeholder="문자와 숫자로 공백없이 입력해주세요.", readOnly="True")  }}
     			    {% else %}
     			    <div class="input-group col-md-12">
-    			      {{ render_field(form.username, class="form-control input-md col-md-10", placeholder="문자와 숫자로 공백없이 입력해주세요.", autofocus=true) }}
-                      <div class="input-group-btn">
+                      <div class="input-group">
+    			        {{ render_field(form.username, class="form-control input-md col-md-10", placeholder="문자와 숫자로 공백없이 입력해주세요.", autofocus=true) }}
                         <span class="input-group-btn">
                             <button id="username_check" class="btn btn-primary">확인</button>
                         </span>
