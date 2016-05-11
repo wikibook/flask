@@ -17,7 +17,7 @@
                         {% if photo %}
                             <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
                                 <a href="{{url_for('photolog.download_photo', photolog_id=photo.id)}}" target="_blank">
-                                    <img src="{{url_for('photolog.download_thumbnail', photolog_id=photo.id)}}" width="200" height="150">
+                                    <img src="{{url_for('photolog.download_thumbnail', photolog_id=photo.id)}}" style="width: 200px; height: 140px;">
                                 </a>
                             </div>
                         {% else %}
@@ -35,10 +35,10 @@
                     </div>
                     
                     <div class="form-group col-md-12"> <!-- TAG Input-->
-                        {{ render_field(form.tag, class="col-md-12 input-md form-cotrol", placeholder="Tag") }}
+                        {{ render_field(form.tag, class="col-lg-12 input-md form-cotrol", placeholder="Tag") }}
                     </div>
                     <div class="form-group col-md-12"> <!-- COMMENT Input-->
-                        {{ render_field(form.comment, class="col-md-12 input-md form-control", placeholder="Comment", row="5") }}
+                        {{ render_field(form.comment, class="col-md-12 input-md form-control", placeholder="Comment", rows="5") }}
                     </div>
 
                     <div>
