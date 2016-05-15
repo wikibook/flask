@@ -152,6 +152,7 @@ def unregist():
                           str(e))
             
             dao.commit()
+
         else:
             Log.error("존재하지 않는 사용자의 탈퇴시도 : %d", user_id)
             raise Exception
@@ -162,13 +163,7 @@ def unregist():
         raise e
     
 #     else:
-    return redirect(url_for('.leave'))
-
-
-@photolog.route('/leave')
-@login_required
-def leave():
-        return render_template('unregist.html')
+    return redirect(url_for('.logout'))
     
 
 def __delete_files(filepath, username):
