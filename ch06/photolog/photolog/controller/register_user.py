@@ -162,7 +162,6 @@ def unregist():
         dao.rollback()
         raise e
     
-#     else:
     return redirect(url_for('.logout'))
     
 
