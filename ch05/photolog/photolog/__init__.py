@@ -82,8 +82,8 @@ def create_app(config_filepath='resource/config.cfg'):
     photolog_app.session_interface = SimpleCacheSessionInterface()
     
     # 공통으로 적용할 HTTP 404과 500 에러 핸들러를 설정
-    photolog_app.error_handler_spec[None][404] = not_found
-    photolog_app.error_handler_spec[None][500] = server_error
+    photolog_app.register_error_handler(404, not_found)
+    photolog_app.register_error_handler(500, server_error)
     
     # 페이징 처리를 위한 템플릿 함수
     photolog_app.jinja_env.globals['url_for_other_page'] = \
