@@ -1,6 +1,6 @@
 ## 『파이썬 웹 프로그래밍 : 플라스크를 이용한 쉽고 빠른 웹 개발』 예제 코드
 
-![http://wikibook.co.kr/elasticsearch/](./cover-1st.jpg) | ![http://wikibook.co.kr/elasticsearch/](./cover-2nd.jpg) 
+![http://wikibook.co.kr/flask/](./cover-1st.jpg "초판") ![http://wikibook.co.kr/flask/](./cover-2nd.jpg "개정증보판") 
 
 * 위키북스 : [초판](http://wikibook.co.kr/flask/) | [개정증보판](http://wikibook.co.kr/flask-revised/) 
 * YES24 : [초판](http://www.yes24.com/24/goods/11934710?scode=032&OzSrank=2) | [개정증보판](http://www.yes24.com/24/goods/27848133?scode=032&OzSrank=1)
