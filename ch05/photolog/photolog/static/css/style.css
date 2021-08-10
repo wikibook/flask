@@ -21,7 +21,7 @@ body .modal-login {
 }
 
 #map-large {
-  height:500px;
+  height:450px;
   background:#6699cc;
 }
 
@@ -98,3 +98,42 @@ td.valign-middle {
 th {
     text-align : center;
 }
+
+
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px; /* Adjusts for spacing */
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+
+/*SEARCH FORM*/
+.search-form {
+    border-radius: 30px 0px 0px 30px;
+    /*border-radius:Top-left, Top-right, Bottom-right, Bottom-left;*/
+}
+/*to cange only one form and not all give unique class name like  class="search-form" */
+ .search-btn {
+    border-radius: 0px 30px 30px 0px;
+    cursor:pointer;
+}
+
+
+
+.table > tbody > tr > td {
+     vertical-align: middle;
+}
+

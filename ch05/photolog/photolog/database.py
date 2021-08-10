@@ -5,7 +5,7 @@
 
     DB 연결 및 쿼리 사용을 위한 공통 모듈.
 
-    :copyright: (c) 2013 by 4mba.
+    :copyright: (c) 2013-2016 by 4mba.
     :license: MIT LICENSE 2.0, see license for more details.
 """
 
@@ -33,7 +33,8 @@ class DBManager:
     
     @staticmethod
     def init_db():
-        from photolog.model import *
+        from photolog.model import user
+        from photolog.model import photo
         from photolog.model import Base
         Base.metadata.create_all(bind=DBManager.__engine)
 

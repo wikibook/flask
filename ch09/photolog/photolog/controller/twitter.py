@@ -5,7 +5,7 @@
 
     트위터와 OAUTH 연동하기 위한 모듈
     
-    :copyright: (c) 2013 by 4mba.
+    :copyright: (c) 2013-2016 by 4mba.
     :license: MIT LICENSE 2.0, see license for more details.
 """
 
@@ -46,9 +46,10 @@ def __send_twit(twitter, photolog_id):
         photo_comment = photo_info[3]
         photo = open(download_filepath, 'rb')
 
-        twitter.update_status_with_media(status=photo_comment, 
-                                         media=photo)
-    
+        response = twitter.upload_media(media=photo)
+        twitter.update_status(status=photo_comment, 
+                              media_ids=[response['media_id']])
+
         session['TWITTER_RESULT'] = 'ok' 
 
     except IOError as e:

@@ -5,7 +5,7 @@
 
     사용자 등록 모듈.
 
-    :copyright: (c) 2013 by 4mba.
+    :copyright: (c) 2013-2016 by 4mba.
     :license: MIT LICENSE 2.0, see license for more details.
 """
 
@@ -162,7 +162,6 @@ def unregist():
         dao.rollback()
         raise e
     
-#     else:
     return redirect(url_for('.logout'))
     
 

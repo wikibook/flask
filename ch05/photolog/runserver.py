@@ -9,17 +9,12 @@
     :license: MIT LICENSE 2.0, see license for more details.
 """
 
-import sys
-
 from photolog import create_app
-
-reload(sys)
-sys.setdefaultencoding('utf-8')
 
 application = create_app()    
 
 if __name__ == '__main__':
-    print "starting test server..."
+    print ("starting test server...")
 
     application.run(host='0.0.0.0', port=5000, debug=True)
 

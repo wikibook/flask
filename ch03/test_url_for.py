@@ -14,5 +14,5 @@ def get_profile(username):
 
 if __name__ == '__main__':
     with app.test_request_context():
-        print url_for('hello')
-        print url_for('get_profile', username='flask')
+        print (url_for('hello'))
+        print (url_for('get_profile', username='flask'))
