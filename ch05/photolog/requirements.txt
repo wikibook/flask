@@ -1,4 +1,4 @@
-certifi==2021.5.30
+certifi==2022.12.7
 charset-normalizer==2.0.4
 click==7.1.2
 dnspython==2.1.0
